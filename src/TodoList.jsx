@@ -10,7 +10,9 @@ export default function TodoList() {
         <div>
             <h1>Todo List</h1>
             {tasks.map(task => (
-                <div key={task.id} {tasks.title} />
+                <div key={task.id}> 
+                    {task.title} 
+                </div>
             ))}
         </div>
     );
