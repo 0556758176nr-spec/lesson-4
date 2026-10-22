@@ -1,3 +1,5 @@
+import TodoItem from "./TodoItem";
+
 export default function TodoList() {
 
     const tasks = [
@@ -6,13 +8,12 @@ export default function TodoList() {
         { id: 3, title: 'Read a book', completed: false },
     ];
 
-    return (
+  
+         return (
         <div>
             <h1>Todo List</h1>
             {tasks.map(task => (
-                <div key={task.id}> 
-                    {task.title} 
-                </div>
+                <TodoItem key={task.id} task={task} />
             ))}
         </div>
     );
