@@ -1,7 +1,7 @@
 export default function TodoItem({task}) {
       return (
         <div>
-            <h2>
+            <h2 style={{ color: getColorByStatus(task.completed) }}>
                 {task.title}
             </h2>
         </div>
