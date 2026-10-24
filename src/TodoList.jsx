@@ -9,7 +9,6 @@ const initialTasks = [
 ];
 
 export default function TodoList() {
-    
     const [tasks, setTasks] = useState(initialTasks);
 
     const addTask = (title) => {
@@ -21,12 +20,20 @@ export default function TodoList() {
         setTasks(prevTasks => [...prevTasks, newTask]);
     };
 
+    const completeTask = (id) => {
+        setTasks(prevTasks =>
+            prevTasks.map(task =>
+                task.id === id ? { ...task, completed: true } : task
+            )
+        );
+    };
+
     return (
         <div>
             <TodoForm onAdd={addTask} />
             <h1>Todo List</h1>
             {tasks.map(task => (
-                <TodoItem key={task.id} task={task} />
+                <TodoItem key={task.id} task={task} onComplete={completeTask} />
             ))}
         </div>
     );
