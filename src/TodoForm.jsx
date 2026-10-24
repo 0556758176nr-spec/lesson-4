@@ -1,9 +1,13 @@
+import { useState, useEffect } from "react";
 
-import { useState } from "react";
-
-export default function TodoForm  ({ onAdd }) {  
-
+export default function TodoForm({ onAdd, onUpdate, editingTask }) {
     const [title, setTitle] = useState('');
+
+    useEffect(() => {
+        if (editingTask) {
+            setTitle(editingTask.title);
+        }
+    }, [editingTask]);
 
     const handleTitleChange = (event) => {
         setTitle(event.target.value);
@@ -11,7 +15,12 @@ export default function TodoForm  ({ onAdd }) {
 
     const handleSubmit = () => {
         if (title.trim() === '') return;
-        onAdd(title);
+
+        if (editingTask) {
+            onUpdate(editingTask.id, title);
+        } else {
+            onAdd(title);
+        }
         setTitle('');
     };
 
