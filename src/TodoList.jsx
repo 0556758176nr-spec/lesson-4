@@ -40,6 +40,7 @@ export default function TodoList() {
             <h1>Todo List</h1>
             {tasks.map(task => (
                 <TodoItem key={task.id} task={task} />
+                
             ))}
         </div>
     );
