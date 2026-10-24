@@ -9,7 +9,9 @@ export default function TodoItem({ task, onComplete }) {
             <h2 style={{ color: getColorByStatus(task.completed) }}>
                 {task.title}
             </h2>
-            <button onClick={() => onComplete(task.id)}>המשימה בוצעה</button>
+            {!task.completed && (
+                <button onClick={() => onComplete(task.id)}>המשימה בוצעה</button>
+            )}
         </div>
     );
 }
